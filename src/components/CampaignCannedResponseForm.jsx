@@ -29,6 +29,7 @@ class CannedResponseForm extends React.Component {
     const { customFields, handleCloseAddForm } = this.props;
     return (
       <div>
+        <div>{this.props.tags[0].name}</div>
         <GSForm ref="form" schema={modelSchema} onSubmit={this.handleSave}>
           <Form.Field
             {...dataTest("title")}
@@ -73,7 +74,8 @@ class CannedResponseForm extends React.Component {
 CannedResponseForm.propTypes = {
   onSaveCannedResponse: type.func,
   handleCloseAddForm: type.func,
-  customFields: type.array
+  customFields: type.array,
+  tags: type.array
 };
 
 export default CannedResponseForm;

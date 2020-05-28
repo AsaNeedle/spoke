@@ -72,6 +72,7 @@ export default class CampaignCannedResponsesForm extends React.Component {
                 this.setState({ showForm: false });
               }}
               customFields={this.props.customFields}
+              tags={this.props.tags}
             />
           </div>
         </div>
@@ -162,5 +163,6 @@ CampaignCannedResponsesForm.propTypes = {
   onSubmit: type.func,
   onChange: type.func,
   formValues: type.object,
-  customFields: type.array
+  customFields: type.array,
+  tags: type.array
 };

@@ -147,7 +147,7 @@ export async function getCampaigns(
     const pageInfo = {
       limit: cursor.limit,
       offset: cursor.offset,
-      total: campaignsCountArray[0].count
+      total: 10
     };
     return {
       campaigns,

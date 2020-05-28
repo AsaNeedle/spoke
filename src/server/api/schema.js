@@ -158,7 +158,7 @@ async function editCampaign(id, campaign, loaders, user, origCampaignRecord) {
 
       if (JOBS_SAME_PROCESS) {
         dispatchContactIngestLoad(job, organization, {
-          /*FUTURE: context obj*/
+          /* FUTURE: context obj*/
         });
       }
     } else {

@@ -3,6 +3,7 @@ export const schema = `
     id: String
     title: String
     text: String
+    tags: Tag
     campaignId: String
     userId: String
   }

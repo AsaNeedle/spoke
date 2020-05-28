@@ -4,6 +4,7 @@ import { r, Organization, cacheableData } from "../models";
 import { accessRequired } from "./errors";
 import { getCampaigns } from "./campaign";
 import { buildSortedUserOrganizationQuery } from "./user";
+import { getTags } from "./tag";
 
 export const resolvers = {
   Organization: {
@@ -39,6 +40,10 @@ export const resolvers = {
         sortBy
       );
     },
+    tags: async (organization, _, { user }) => {
+      await accessRequired(user, organization.id, "SUPERVOLUNTEER");
+      return getTags(organization.id);
+    },
     threeClickEnabled: organization =>
       organization.features.indexOf("threeClick") !== -1,
     textingHoursEnforced: organization => organization.texting_hours_enforced,
@@ -51,7 +56,7 @@ export const resolvers = {
     textingHoursStart: organization => organization.texting_hours_start,
     textingHoursEnd: organization => organization.texting_hours_end,
     cacheable: (org, _, { user }) =>
-      //quanery logic.  levels are 0, 1, 2
+      // quanery logic.  levels are 0, 1, 2
       r.redis ? (getConfig("REDIS_CONTACT_CACHE", org) ? 2 : 1) : 0,
     twilioAccountSid: async (organization, _, { user }) => {
       try {

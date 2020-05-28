@@ -15,7 +15,7 @@ import loadData from "./hoc/load-data";
 import wrapMutations from "./hoc/wrap-mutations";
 import RaisedButton from "material-ui/RaisedButton";
 import CampaignBasicsForm from "../components/CampaignBasicsForm";
-//import CampaignContactsForm from "../components/CampaignContactsForm";
+// import CampaignContactsForm from "../components/CampaignContactsForm";
 import CampaignContactsChoiceForm from "../components/CampaignContactsChoiceForm";
 import CampaignTextersForm from "../components/CampaignTextersForm";
 import CampaignInteractionStepsForm from "../components/CampaignInteractionStepsForm";
@@ -386,7 +386,8 @@ class AdminCampaignEdit extends React.Component {
         expandAfterCampaignStarts: true,
         expandableBySuperVolunteers: true,
         extraProps: {
-          customFields: this.props.campaignData.campaign.customFields
+          customFields: this.props.campaignData.campaign.customFields,
+          tags: this.props.organizationData.organization.tags
         }
       },
       {
@@ -752,6 +753,10 @@ const mapQueriesToProps = ({ ownProps }) => ({
         organization(id: $organizationId) {
           id
           uuid
+          tags {
+            id
+            name
+          }
           fullyConfigured
           texters: people {
             id

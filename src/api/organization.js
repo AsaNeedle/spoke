@@ -11,6 +11,7 @@ export const schema = gql`
       sortBy: SortCampaignsBy
     ): CampaignsReturn
     people(role: String, campaignId: String, sortBy: SortPeopleBy): [User]
+    tags: [Tag]
     optOuts: [OptOut]
     threeClickEnabled: Boolean
     optOutMessage: String
